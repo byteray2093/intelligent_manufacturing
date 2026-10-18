@@ -1,0 +1,8 @@
+# Exact top-level versions used for this integration (Python 3.12).
+numpy==2.3.5
+scipy==1.17.0
+mujoco==3.16.0
+matplotlib==3.10.8
+pytest==9.1.1
+imageio==2.38.1
+imageio-ffmpeg==0.6.0

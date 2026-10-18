@@ -1,0 +1,68 @@
+======================================================================
+F 模块｜MuJoCo 控制与完整搬运演示 —— 运行摘要
+======================================================================
+  cycles_requested           : 3
+  cycles_completed           : 3
+  cycles_succeeded           : 3
+  mode                       : reset
+  dt                         : 0.002
+  control_freq_hz            : 500.0
+  total_steps                : 24921
+  total_sim_time_s           : 49.842
+  wall_time_s                : 6.21
+  track_err_max_rad          : 0.002562
+  track_err_max_deg          : 0.1468
+  all_consecutive_success    : True
+  video                      : C:\Users\ACER\Downloads\F_mujoco_pick_place_demo\results\videos\demo.mp4
+  render_backend             : mujoco_opengl
+  frames                     : 1465
+
+----------------------------------------------------------------------
+逐次循环明细
+----------------------------------------------------------------------
+
+  循环 1: ✓ 成功
+      steps                    = 8307
+      duration_s               = 16.614
+      track_err_max_rad        = 0.002562
+      track_err_mean_rad       = 0.0007754007463584928
+      ik_segments              = 5
+      ik_all_converged         = True
+      grasp_shift_mm           = 0.782745227478751
+      tcp_err_mm               = 2.1643181425116604
+      place_dxy_mm             = 0.8605765026128056
+      place_dz_mm              = 0.17402731180222314
+      工件最终位置        = [0.35048, 0.39929, 0.03483]
+
+  循环 2: ✓ 成功
+      steps                    = 8307
+      duration_s               = 16.614
+      track_err_max_rad        = 0.002562
+      track_err_mean_rad       = 0.0007754007463584928
+      ik_segments              = 5
+      ik_all_converged         = True
+      grasp_shift_mm           = 0.782745227478751
+      tcp_err_mm               = 2.1643181425116604
+      place_dxy_mm             = 0.8605765026128056
+      place_dz_mm              = 0.17402731180222314
+      工件最终位置        = [0.35048, 0.39929, 0.03483]
+
+  循环 3: ✓ 成功
+      steps                    = 8307
+      duration_s               = 16.614
+      track_err_max_rad        = 0.002562
+      track_err_mean_rad       = 0.0007754007463584928
+      ik_segments              = 5
+      ik_all_converged         = True
+      grasp_shift_mm           = 0.782745227478751
+      tcp_err_mm               = 2.1643181425116604
+      place_dxy_mm             = 0.8605765026128056
+      place_dz_mm              = 0.17402731180222314
+      工件最终位置        = [0.35048, 0.39929, 0.03483]
+
+======================================================================
+验收对照（任务书 F 模块）
+======================================================================
+  [✓] 至少连续完成 3 次同一设置下的搬运流程： 请求 3 次，成功 3 次
+  [✓] results/videos/demo.mp4： C:\Users\ACER\Downloads\F_mujoco_pick_place_demo\results\videos\demo.mp4
+  [✓] 记录失败情况不剪辑掩盖：全部 3 次结果均写入日志，含失败与告警事件

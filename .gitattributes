@@ -1,0 +1,2 @@
+# Large vendor meshes are reviewed through model validation and visual inspection.
+*.obj -diff
