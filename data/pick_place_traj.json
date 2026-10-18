@@ -1,0 +1,40 @@
+{
+  "backend": "D.ik.py (MuJoCo+ur5e.xml; tight planning tolerance)",
+  "samples": 6694,
+  "duration_s": 13.386,
+  "peak_velocity_rad_s": [
+    0.9995792918683719,
+    0.6893365313617323,
+    0.47509141053728854,
+    0.9992785982939267,
+    3.4437481464394404e-06,
+    0.9995792918673345
+  ],
+  "peak_acceleration_rad_s2": [
+    1.405397347476356,
+    1.5948074898872733,
+    1.2132565001508056,
+    1.8865693681959783,
+    5.3019870424622585e-06,
+    1.4054026492811635
+  ],
+  "segment_names": [
+    "home->hover",
+    "approach_up->grasp_up",
+    "grasp_up->lift_up",
+    "lift_up->lift_down",
+    "lift_down->place_down",
+    "place_down->retreat_down",
+    "retreat->home"
+  ],
+  "segment_durations_s": [
+    2.0,
+    1.6,
+    1.6460000000000001,
+    3.34,
+    1.6,
+    1.2,
+    2.0
+  ],
+  "within_joint_limits": true
+}

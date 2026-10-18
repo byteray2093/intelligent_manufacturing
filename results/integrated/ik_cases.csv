@@ -1,0 +1,4 @@
+case,success,pos_error_mm,rot_error_rad,iterations
+home,True,0.0,0.0,0
+transfer_end,True,0.055095919710415664,9.951689692624778e-08,38
+outside,False,4155.096940144099,2.0283218985242444,200

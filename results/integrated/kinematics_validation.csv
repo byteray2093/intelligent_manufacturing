@@ -1,0 +1,12 @@
+check,item,metric,value,unit,threshold,passed,note
+c_fk,/workspace/scratch/97a86de02f07/repo/src/kinematics/fk.py,pos_max_mm,1.136748365400708,mm,2.0,True,"10 组随机关节角（seed=42, ±1.5 rad），对比 MuJoCo 法兰位姿"
+c_fk,/workspace/scratch/97a86de02f07/repo/src/kinematics/fk.py,pos_mean_mm,0.8961583805784834,mm,2.0,True,
+c_fk,/workspace/scratch/97a86de02f07/repo/src/kinematics/fk.py,rot_max_deg,2.2619465107845377e-14,deg,0.05,True,C 用补偿矩阵对齐 MuJoCo，姿态应当几乎精确
+c_fk_tcp,/workspace/scratch/97a86de02f07/repo/src/kinematics/fk.py,flange_vs_tcp_pos_mm,100.70039721868025,mm,1.0,False,把 C 的法兰 FK 直接当 TCP 用会产生的偏差（坐标系陷阱，见 F 的接口说明）
+c_fk_tcp,/workspace/scratch/97a86de02f07/repo/src/kinematics/fk.py,flange_vs_tcp_rot_deg,89.99999999999997,deg,1.0,False,法兰与 TCP 的姿态差（模型里 attachment_site 相对 wrist_3_link 有 90° 旋转）
+numeric_jacobian,eps=0.0001,max_abs_diff,1.2491826462124322e-09,-,1e-08,True,中心差分，5 个随机关节角，逐元素最大偏差
+numeric_jacobian,eps=1e-05,max_abs_diff,2.8233304583125118e-11,-,1e-08,True,中心差分，5 个随机关节角，逐元素最大偏差
+numeric_jacobian,eps=1e-06,max_abs_diff,3.125862901853793e-10,-,1e-08,True,中心差分，5 个随机关节角，逐元素最大偏差
+numeric_jacobian,eps=1e-07,max_abs_diff,3.6315557228050466e-09,-,1e-08,True,中心差分，5 个随机关节角，逐元素最大偏差
+flange_tcp,T_flange_tcp,pos_err_m,0.0,m,1e-09,True,T_tcp == T_flange @ T_flange_tcp，offset=0.1000 m
+flange_tcp,T_flange_tcp,rot_err,7.468261590855957e-16,-,1e-09,True,

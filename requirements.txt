@@ -4,3 +4,5 @@ scipy>=1.11,<2
 mujoco>=3.1,<4
 matplotlib>=3.8,<4
 pytest>=8,<10
+imageio>=2.34,<3
+imageio-ffmpeg>=0.5,<1

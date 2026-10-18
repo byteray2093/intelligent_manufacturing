@@ -1,47 +1,57 @@
-# 智能制造导论 · 题目11
+# 六轴机器人运动学与搬运轨迹仿真
 
-**基于 MuJoCo 的六轴工业机器人运动学分析与搬运轨迹仿真系统**
+《智能制造导论》题目11，UR5e + Python + MuJoCo。B–G 组交付已集成：独立 DH 正运动学、阻尼最小二乘逆运动学、七阶段搬运规划、吸附约束搬运、轨迹/误差/奇异性/工作空间分析。
 
-课程项目｜8 人团队｜2026-10-15 至 2026-11-04
+## 安装与运行
 
-> 当前为 **Day-0 协作框架**，不代表运动学、抓取或仿真已完成。所有演示结果以测试和实验为准。
-
-## 快速入口
-- [任务认领与验收](docs/TASKS.md)
-- [接口规范（必须先读）](docs/INTERFACES.md)
-- [Git 协作规范](CONTRIBUTING.md)
-- [阶段计划](docs/PLAN.md)
-- [AI 使用记录模板](docs/AI_USAGE.md)
-
-## 技术范围
-UR5e 六轴模型（来自 MuJoCo Menagerie，模型及资源按上游许可证引用）；Python、NumPy、SciPy、MuJoCo。正运动学、逆运动学、轨迹规划、搬运仿真、奇异点与可达性分析。
-
-## 开发环境
-建议 Python 3.11；精确依赖以 `requirements.txt` 为准。
+推荐 Python 3.11 或 3.12，在仓库根目录运行：
 
 ```bash
-git clone https://github.com/Marco6-3/intelligent_manufacturing.git
-cd intelligent_manufacturing
 python -m venv .venv
 # Windows: .venv\Scripts\activate
 # Linux/macOS: source .venv/bin/activate
 python -m pip install -r requirements.txt
-python -m pytest -q
-python -m src.main
+python -m src.main plan
+python -m src.main demo --cycles 3 --no-video
+python -m src.main analyze
 ```
 
-目前 `src.main` 只做接口框架检查，不加载机器人。B 组完成模型导入后，再接入真实 MuJoCo 场景。不要把空壳标记为“搬运系统可用”。
+现场窗口：`python -m src.main demo --cycles 3 --viewer --no-video`。macOS 的 MuJoCo viewer 需要使用 `mjpython -m src.main demo --viewer --no-video`。
 
-## 核心约定
-- 关节顺序固定为 UR5e 模型的六个受控关节；角度/角速度单位 rad、rad/s；长度 m；时间 s。
-- 末端位姿统一为 `T_world_tcp` (4×4, float)，随模型建立再冻结 TCP 定义。
-- 接口与异常见 [docs/INTERFACES.md](docs/INTERFACES.md)，修改接口须先由 A 协调。
-- 功能分支 `feat/B-scene` 等；通过 PR 合并 `main`，不直接覆盖其他人的文件。
+录制视频：`python -m src.main demo --cycles 3`。Linux 无桌面环境可先设置 `export MUJOCO_GL=egl`；OpenGL 不可用时会明确标记骨架渲染后备模式。视频存于 `results/videos/demo.mp4`。
 
-## 原始课程要求
-至少两类可运行/可演示文件；技术说明书、AI 使用声明、5–10 页 PPT，8 分钟汇报。优先保证正逆运动学、轨迹、奇异性、可达性、结果可复现。
+一键完整验收：
 
-## 外部资源
-- https://github.com/google-deepmind/mujoco_menagerie/tree/main/universal_robots_ur5e
-- https://mujoco.readthedocs.io/
-- https://petercorke.github.io/robotics-toolbox-python/
+```bash
+python scripts/verify_all.py
+# 同时录视频：python scripts/verify_all.py --video
+```
+
+## 已验证结果
+
+完整 E 轨迹按阶段执行，连续三次搬运成功。具体测量及环境见 [本次集成验收报告](docs/INTEGRATION_REPORT.md)，最新可复核输出见 [results/integrated](results/integrated)。
+
+- [演示视频](results/videos/demo.mp4)
+- [关节与TCP跟踪误差](results/integrated/tracking.png)
+- [规划对比及工作空间采样图](results/integrated/planning_workspace.png)
+- [同起终点、同时长的规划对比数据](results/integrated/planning_comparison.csv)
+- [执行摘要](results/logs/run_summary_latest.json)
+
+这些是理想吸附约束的仿真验证。当前没有真实夹爪接触抓取或自动避障；工作空间采样不等同于无碰撞位姿可达性。数值 IK 失败只能说明该初值和迭代预算下未收敛。
+
+## 模块与协作
+
+| 模块 | 集成位置 | 说明 |
+|---|---|---|
+| A 集成 | `src/main.py`、`scripts/verify_all.py` | 统一命令、验收与CI |
+| B 模型场景 | `universal_robots_ur5e/`、`scenes/pick_place.xml` | 单份网格资源、场景及许可 |
+| C 正运动学 | `src/kinematics/fk.py` | `fk_flange` 明确法兰；`fk_tcp` 显式接工具变换 |
+| D 逆运动学 | `src/kinematics/ik.py` | DLS、限位/步长约束、公共 `IKResult` 适配 |
+| E 轨迹 | `src/planning/` | 五次关节轨迹、笛卡尔直线、七阶段元数据 |
+| F 控制 | `src/control/controller.py` | 跟踪、吸附/释放、日志及视频 |
+| G 分析 | `src/analysis/` | G原有分析函数及当前集成分析入口 |
+| H 展示 | `docs/` | 可引用验收报告；最终成员姓名、技术说明书与5–10页PPT仍需整理 |
+
+[模型与坐标](docs/ROBOT_MODEL.md) · [冻结接口](docs/INTERFACES.md) · [AI使用记录](docs/AI_USAGE.md) · [原始交付与历史数据说明](upstream_refs/README.md)
+
+旧版 G 脚本和会断言旧故障的测试已保留为历史参考，不混入当前验收；原始结果与当前复跑数据分开。组员后续从最新 `main` 建功能分支，通过 PR 提交，公共数据契约保持兼容。

@@ -11,3 +11,5 @@ results/logs/*
 results/videos/*
 !results/logs/.gitkeep
 !results/videos/.gitkeep
+results/.mplconfig/
+*.log

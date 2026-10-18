@@ -1,0 +1,36 @@
+{
+  "cycles": [
+    1,
+    2,
+    3
+  ],
+  "samples": 23979,
+  "joint_error_max_deg": 0.22649021641521352,
+  "joint_rmse_rad": 0.0006431574818806175,
+  "tcp_error_max_mm": 3.3320394151408865,
+  "tcp_error_rms_mm": 0.667214521992426,
+  "orientation_error_max_deg": 0.5186418547032584,
+  "logger_pose_max_error_mm": 0.001208771542900469,
+  "logger_lag_samples": 0,
+  "sigma_min": 0.22222178540971996,
+  "jacobian_characteristic_length_m": 1.0,
+  "near_singularity_threshold": 0.02,
+  "near_singular_samples": 0,
+  "workspace": {
+    "samples": 20000,
+    "seed": 20261018,
+    "min_xyz_m": [
+      -0.9424652694116035,
+      -0.935947399456386,
+      -0.7888452605560605
+    ],
+    "max_xyz_m": [
+      0.9312600200031498,
+      0.9117150264649485,
+      1.1174063014016835
+    ],
+    "interpretation": "FK samples only; excludes collision-free reachability claims"
+  },
+  "log_sha256": "12b3d96f8e27df8010088f122abe1d1cd5563ff4214fef44c8c254dc4bd94b78",
+  "model_sha256": "ffd0a7b336d3c2d2"
+}

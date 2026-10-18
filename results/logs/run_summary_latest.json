@@ -1,0 +1,81 @@
+{
+  "summary": {
+    "cycles_requested": 3,
+    "cycles_completed": 3,
+    "cycles_succeeded": 3,
+    "mode": "reset",
+    "dt": 0.002,
+    "control_freq_hz": 500.0,
+    "total_steps": 23979,
+    "total_sim_time_s": 47.958,
+    "wall_time_s": 89.08,
+    "track_err_max_rad": 0.003952,
+    "track_err_max_deg": 0.2264,
+    "all_consecutive_success": true,
+    "video": "results/videos/demo.mp4",
+    "render_backend": "mujoco_opengl",
+    "frames": 479
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "success": true,
+      "steps": 7993,
+      "duration_s": 15.986,
+      "track_err_max_rad": 0.003952,
+      "track_err_mean_rad": 0.0008540386588264732,
+      "ik_segments": 0,
+      "ik_all_converged": true,
+      "place_dxy_mm": 0.42379712083360244,
+      "place_dz_mm": 0.17402731180224396,
+      "wp_final": [
+        0.35015342358662377,
+        0.39960494911379124,
+        0.03482597268819776
+      ],
+      "grasp_shift_mm": 0.7795647017683858,
+      "tcp_err_mm": 2.163121442125284,
+      "used_e_traj": true
+    },
+    {
+      "cycle": 2,
+      "success": true,
+      "steps": 7993,
+      "duration_s": 15.986,
+      "track_err_max_rad": 0.003952,
+      "track_err_mean_rad": 0.0008540386588264732,
+      "ik_segments": 0,
+      "ik_all_converged": true,
+      "place_dxy_mm": 0.42379712083360244,
+      "place_dz_mm": 0.17402731180224396,
+      "wp_final": [
+        0.35015342358662377,
+        0.39960494911379124,
+        0.03482597268819776
+      ],
+      "grasp_shift_mm": 0.7795647017683858,
+      "tcp_err_mm": 2.163121442125284,
+      "used_e_traj": true
+    },
+    {
+      "cycle": 3,
+      "success": true,
+      "steps": 7993,
+      "duration_s": 15.986,
+      "track_err_max_rad": 0.003952,
+      "track_err_mean_rad": 0.0008540386588264732,
+      "ik_segments": 0,
+      "ik_all_converged": true,
+      "place_dxy_mm": 0.42379712083360244,
+      "place_dz_mm": 0.17402731180224396,
+      "wp_final": [
+        0.35015342358662377,
+        0.39960494911379124,
+        0.03482597268819776
+      ],
+      "grasp_shift_mm": 0.7795647017683858,
+      "tcp_err_mm": 2.163121442125284,
+      "used_e_traj": true
+    }
+  ]
+}
