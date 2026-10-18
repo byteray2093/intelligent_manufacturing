@@ -16,3 +16,16 @@
 - 保留出处：C/D/E/F/G原模块实现及模型许可；原始D源码、旧G脚本/测试和原始日志保存在 `upstream_refs`。组员在自己开发时用了哪些AI工具尚未核实，不能据此代填。
 - 已执行的机器核验：实际MuJoCo运行、连续三次搬运、独立DH与MuJoCo比对、解析Jacobian与有限差分比对、不可达目标/非法时间测试、阶段与时间同步检查、视频解码和画面检查。详见 `docs/INTEGRATION_REPORT.md`。
 - 提交前组员人工核验：各模块负责人应在本机复跑，理解核心公式并确认自己的AI使用说明；姓名/贡献比例由组长据实际情况填写。自动测试通过不等于成员已完成上述人工确认。
+## 2026-10-18 H 模块：环境复现与技术报告
+
+- 记录人：H 模块负责人林凌
+- AI 工具与模型：ChatGPT（GPT-6）。
+- 使用目的：辅助 Windows 环境配置、报错排查、仿真结果解读、技术说明书及汇报材料编写。
+- 主要提示词摘要：如何在 Windows 配置 Python 与 MuJoCo；UR5e 模型 XML 加载失败如何排查；如何验证三次搬运与集成验收；如何根据 summary.json 和实验图表编写报告。
+- AI 生成内容：环境复现指导、错误排查建议、实验数据说明、H 模块 Markdown 文档、Word 技术说明书及 PPT/讲稿初稿。
+- 人工核验：本人在 Windows 上运行 `python -m src.main plan`，规划成功；运行 `python -m src.main demo --cycles 3 --no-video`，连续 3/3 次搬运成功；运行 `python scripts/verify_all.py`，输出 `Integrated checks passed`；核查 `summary.json`、`tracking.png`、`planning_workspace.png`，并确认演示视频可播放。
+- 实测指标：关节最大跟踪误差 0.226490°，TCP 最大位置误差 3.332039 mm，TCP 位置 RMSE 0.667215 mm。
+- 问题与修正：Windows 编码问题采用 `PYTHONUTF8=1` 辅助处理；依赖下载改用清华 PyPI 镜像；模型加载异常后，将项目从中文目录复制到英文路径并重新安装依赖，随后运行成功。
+- 结果边界：上述结果仅对应本次仿真场景和采样条件；H 模块不声称独立开发或全面人工审核其他模块的算法。
+- 复现文档：`docs/H_environment_reproduction.md`。
+- PR / commit：环境复现记录提交 `4b13ef6`；最终 PR 链接待提交后补充。
